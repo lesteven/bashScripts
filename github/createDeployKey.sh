@@ -2,15 +2,13 @@
 
 source ./deployKey.config
 
-FILE=~/.ssh/$deploy_key_file
+FILE=~/.ssh/$deploy_key
 
 if [ ! -f "$FILE" ]; then
     echo "$FILE does not exist, creating.."
-    printf y | ssh-keygen -f ~/.ssh/"$deploy_key" -t rsa -b 4096 -C $email
+    ssh-keygen -f "$FILE" -t rsa -b 4096 -N ""
 
-    ssh-add ~/.ssh/"$deploy_key"
-
-    key=$(cat ~/.ssh/"$deploy_key_file")
+    key=$(cat ~/.ssh/"$deploy_key".pub)
 
     json='{"title":"'$deploy_key'","key":"'$key'","read_only":true}'
 

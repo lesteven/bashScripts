@@ -1,10 +1,11 @@
 #!/bin/bash
 
 
-read -p "Enter username: " username
+source ghToken.sh
 
 read -p "Enter reponame: " repo
 
 
-curl -u $username -X DELETE \
-    https://api.github.com/repos/$username/$repo 
+curl -X DELETE \
+    https://api.github.com/repos/lesteven/$repo \
+    -H 'Authorization: token '$token'' \

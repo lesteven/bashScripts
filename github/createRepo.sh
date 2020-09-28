@@ -1,5 +1,5 @@
 
-source ghToken.sh
+source ~/.misc/ghToken.sh
 
 read -p "Enter reponame: " repo
 
